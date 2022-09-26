@@ -1,0 +1,150 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container position-absolute top-50 translate-middle start-50"
+    style="background-color: rgb(253, 227, 195);width: fit-content;">
+    <div class="row" style="align-items:center">
+        <div style="text-align:center">
+            <h1 style="font-size: solid large;"><b>Register Page</b></h1>
+        </div>
+        <div class="col">
+            <img src="../assets/media/login1.png" alt="login image">
+        </div>
+        <div class="col">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
+                                    style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder=" Enter your First Name"
+                            formControlName="firstname" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }">
+                       
+                        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstname.errors.required">firstname is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
+                                    style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder=" Enter your Last Name"
+                            formControlName="lastname" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }">
+                       
+                        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastname.errors.required">lastname is required</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"
+                                    style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                        </div>
+                        <input type="number" class="form-control" placeholder=" Enter your Phone Number"
+                            formControlName="phone" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+                       
+                        <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                            <div *ngIf="f.phone.errors.required">phone number is required</div>
+                            <div *ngIf="f.phone.errors.min">minimum length is 10</div>
+                            <div *ngIf="f.phone.errors.max">maximum length is 10</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"
+                                    style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                        </div>
+                       
+                        <input type="text" formControlName="email" placeholder="Enter email ID" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required"> Email is required
+                            </div>
+                            <div *ngIf="f.email.errors.email"> Email must be a valid email address
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-birthday-cake"
+                                    style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                        </div>
+                        <input type="date" class="form-control" formControlName="dob"
+                            [ngClass]="{ 'is-invalid': submitted && f.dob.errors }">
+                        
+                        <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                            <div *ngIf="f.dob.errors.required">dob is required</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"
+                                    style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                        </div>
+                        <input type="text" formControlName="pwd" placeholder="Create a password"
+                            class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }" />
+                        <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
+                            <div *ngIf="f.pwd.errors.required">Password is required</div>
+                            <!-- <div *ngIf="f.pwd.errors.minlength">Password must be at least 6 characters
+                            </div> -->
+                            <div class="error-text" *ngIf="f.pwd.hasError('passwordStrength')">
+                                {{registerForm.get('pwd').errors['passwordStrength']}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-transgender"
+                                        style="margin-bottom: 5px;margin-top: 5px;"></i></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col" style="margin-top: 10px;"  [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" >
+                        <input type="radio" value="male" name="gender" formControlName="gender"
+                            style="margin-right: 10px;"   [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Male
+                        <input type="radio" value="female" name="gender" formControlName="gender"
+                            style="margin-right: 10px;"   [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Female
+                        <input type="radio" value="transgender" name="gender" formControlName="gender"
+                            style="margin-right: 10px;"   [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">Transgender
+                        <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                            <div *ngIf="f.gender.errors.required">gender is required</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-left: 70px;">
+                        <button type="submit" class="btn btn-success">Register</button>
+                        <button type="submit" class="btn btn-success" (click)="login()"
+                            style="margin-left: 30px;">Back</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>

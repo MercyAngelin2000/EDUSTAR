@@ -1,0 +1,104 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="col d-flex justify-content-center">
+
+    <div class="card" style="margin-top:10px;">
+
+        <div class="card-header" style="background-color: rgb(6, 6, 105); color: aliceblue;">
+            <div style="text-align: center;">
+             <b> User Profile</b>
+            </div>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="userprofile" novalidate>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label>First Name</label>
+                            <div class="input-group">
+                                <input type="text" name="firstname" formControlName="firstname" class="form-control">
+                                <div style="color: red;"
+                                    *ngIf="userprofile.get('firstname')?.invalid && (userprofile.get('firstname')?.dirty || userprofile.get('firstname')?.touched) && userprofile.get('firstname')?.errors?.['required']">
+                                    required</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label>Last Name</label>
+                            <div class="input-group">
+                                <input type="text" name="lname" formControlName="lastname" class="form-control">
+                                <div style="color: red;"
+                                    *ngIf="userprofile.get('lastname')?.invalid && (userprofile.get('lastname')?.dirty || userprofile.get('lastname')?.touched) && userprofile.get('lastname')?.errors?.['required']">
+                                    required</div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label>Phone Number</label>
+                            <div class="input-group">
+                                <input type="number" name="phone" formControlName="phone" class="form-control">
+                                <div style="color: red;"
+                                    *ngIf="userprofile.get('phone')?.invalid && (userprofile.get('phone')?.dirty || userprofile.get('phone')?.touched) && userprofile.get('phone')?.errors?.['required']">
+                                    required</div>
+                                <div style="color: red;" *ngIf="userprofile.get('phone')?.errors?.['min']">
+                                    invalid
+                                </div>
+                                <div style="color: red;" *ngIf="userprofile.get('phone')?.errors?.['max']">
+                                    invalid
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label>Email</label>
+                            <div class="input-group">
+                                <input type="email" name="email" formControlName="email" readonly class="form-control"
+                                    style="background-color:#e5e5e5;">
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <label>Date of Birth</label>
+                            <div class="input-group">
+                                <input type="date" name="dob" formControlName="dob" class="form-control">
+                                <div style="color: red;"
+                                    *ngIf="userprofile.get('dob')?.invalid && (userprofile.get('dob')?.dirty || userprofile.get('dob')?.touched) && userprofile.get('dob')?.errors?.['required']">
+                                    required</div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <label>Gender</label>
+                            <div class="input-group">
+                                <input type="text" name="gender" formControlName="gender" class="form-control">
+                                <div style="color: red;"
+                                    *ngIf="userprofile.get('gender')?.invalid && (userprofile.get('gender')?.dirty || userprofile.get('gender')?.touched) && userprofile.get('gender')?.errors?.['required']">
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 d-flex justify-content-center">
+                        <img src="../assets/media/user.png" class="rounded-circle" alt="student image" width="170"
+                            height="170px">
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="card-footer">
+
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-success" [disabled]="!userprofile.valid"
+                    (click)="onSubmit()">Update</button>
+                <button type="button" (click)="onDelete()" class="btn btn-danger">Delete my
+                    profile</button>
+            </div>
+        </div>
+
+    </div>
+</div>

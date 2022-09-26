@@ -1,0 +1,67 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="container position-absolute top-50 translate-middle start-50"
+    style="width:fit-content;background-color: rgb(253, 227, 195);">
+
+
+    <div class="row">
+
+        <div class="col" #image style="margin-top: 30px;">
+            <img src="../assets/media/login1.png" alt="login image" height="200px">
+        </div>
+
+        <div class="col">
+            <img src="../assets/media/login2.png" alt="login image" height="90px" width="160px">
+            <form name="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
+                                style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" formControlName="email">
+                </div>
+
+                <div style="color: red;"
+                    *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) && loginForm.get('email')?.errors?.required">
+                    Required
+                </div>
+                
+                <div class="input-group mb-3 inner-addon right-addon">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"
+                                style="margin-bottom: 5px;margin-top: 10px;"></i></span>
+                    </div>
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" class="form-control"
+                        placeholder="Password" formControlName="pwd">
+                    <div style="margin-top: 10px;">
+                        <i alt="show" class="fa fa-eye eye-show" style="position: absolute;
+                        right: 0; top: 15px; right: 4px;" (click)="showPassword = !showPassword"
+                            [class.hide]="!showPassword"
+                            ></i>
+                        <i alt="hide" class="fa fa-eye-slash eye-hide" style="position: absolute;
+                        right: 0; top: 15px;right: 4px;" (click)="showPassword = !showPassword"
+                            [class.hide]="showPassword"
+                            ></i>
+                    </div>
+                </div>
+                <div style="color: red;"
+                    *ngIf="loginForm.get('pwd')?.invalid && (loginForm.get('pwd')?.dirty || loginForm.get('pwd')?.touched) && loginForm.get('pwd')?.errors?.required">
+                    Required</div>
+
+
+
+
+                <button type="submit" class="btn btn-success"
+                    style="margin-right: 20px;margin-left:40px">Login</button>
+                <a href="/register" target="_self"><button type="button" class="btn btn-success">Register</button></a>
+
+
+
+
+            </form>
+        </div>
+    </div>
+
+</div>
