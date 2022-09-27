@@ -299,7 +299,6 @@ export class SchoolProfileComponent implements OnInit {
     });
     this.subservice.sclprofile().subscribe((arg: any) =>{
       this.data=arg;
-      console.log(this.data);
       if(this.data!=null)
         this.generalForm.patchValue(this.data)
 
