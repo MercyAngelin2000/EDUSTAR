@@ -8,8 +8,8 @@ export class MainserviceService {
   data: any;
   token: any;
   constructor(private http:HttpClient) { }
-  // base ="https://sclpropython.herokuapp.com"
-  base = "http://127.0.0.1:8000"
+  base ="https://sclpropython.herokuapp.com"
+  // base = "http://127.0.0.1:8000"
 
   login(data:any,url:any){
     return this.http.post(this.base+url,data); 
