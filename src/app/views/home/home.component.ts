@@ -36,12 +36,11 @@ export class HomeComponent implements OnInit {
       confirmButtonText: 'logout'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Logged out!',
-          'Logged out successfully',
-          'success'
+        // Swal.fire(
+        //   'Logged out!',
+        //   'success',
 
-        )
+        // )
         localStorage.removeItem('token');
         localStorage.clear();
         this.router.navigate(['/'])
