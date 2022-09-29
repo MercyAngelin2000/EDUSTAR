@@ -14,7 +14,7 @@
   </mat-toolbar>
   
    <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="side" opened="True">
+    <mat-drawer #drawer class="example-sidenav" [mode]="mode?'over':'side'" opened="True">
       <mat-nav-list>
         
         <button mat-list-item (click)="userprofile()" style="color: white;"><i class="fa fa-user-circle-o" aria-hidden="true" style="color: #0fed25;"></i>User Profile</button>

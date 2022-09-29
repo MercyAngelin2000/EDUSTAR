@@ -19,6 +19,7 @@
       // width: 175px;
       height: auto;
       width: auto;
+      display: block;
     }
     .mat-toolbar{
       background-color: rgb(233, 166, 42);
@@ -33,6 +34,15 @@
   mat-toolbar-row{
     width: auto;
   }
+  // @media only screen and (max-width: 600px) {
+  //   .example-sidenav{
+  //     display:none
+      
+      
+  //   }
+  // }
+
+  
     
   
     

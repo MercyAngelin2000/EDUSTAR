@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
+  mode = false;
   constructor(private router:Router) { }
 
   ngOnInit(): void {

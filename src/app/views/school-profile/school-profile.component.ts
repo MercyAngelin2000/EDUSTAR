@@ -16,6 +16,7 @@ export class SchoolProfileComponent implements OnInit {
   msg : any ="General Information";
   data: any;
   id: any;
+  dataToSubmit:any = "sclprofile";
   state:any = ['Andaman and Nicobar Islands',' Andhra Pradesh','Arunachal Pradesh',' Assam','  Bihar','Chandigarh',' Chhattisgarh','Dadra and Nagar Haveli','Daman and Diu',' Delhi',
   'Goa','Gujarat','Haryana',' Himachal Pradesh','Jammu and Kashmir','Jharkhand','Karnataka',' Kenmore','Kerala',' Lakshadweep','Maharashtra','Manipur','Meghalaya',' Mizoram','Nagaland',
   'Narora','Natwar','Odisha','Paschim Medinipur','Pondicherry','Punjab','Rajasthan','Sikkim','Tamil Nadu',' Telangana',' Tripura',' Uttar Pradesh',' Uttarakhand',' Vaishali','West Bengal'];
@@ -29,6 +30,7 @@ export class SchoolProfileComponent implements OnInit {
       
     }
     this.generalForm=this.fb.group({
+      sclprofile1:this.fb.group({
       instituteName:['',Validators.required],
       postal:['',Validators.required],
       district:['',Validators.required],
@@ -41,6 +43,8 @@ export class SchoolProfileComponent implements OnInit {
       schoolLocation:['',Validators.required],
       establishmentYear:['',Validators.required],
       medium:['',Validators.required],
+      }),
+      sclprofile2:this.fb.group({
       natureOfAffiliation:['',Validators.required],
       schoolLevel:['',Validators.required],
       gender:['',Validators.required],
@@ -52,25 +56,31 @@ export class SchoolProfileComponent implements OnInit {
       correspondentName:['',Validators.required],
       correspondentMobile:['',[Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
       correspondentEmail:['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      principalName:['',Validators.required],
-      principalPhone:['',[Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
-      principalEmail:['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      principalMobile:['',[Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
-      instituteRecognizedByGovt:['',Validators.required],
-      boardName:['',Validators.required],
-      affiliationNo:['',Validators.required],
-      affiliationYear:['',Validators.required],
-      affiliationType:['',Validators.required],
-      affiliationCondition:['',Validators.required],
-      minorityStatusCertificate:['',Validators.required],
-      christian:['',Validators.required],
-      hindu:['',Validators.required],
-      muslim:['',Validators.required],
-      others:['',Validators.required],
-      nonBeliever:['',Validators.required],
-      fireSaftyCertificate:['',Validators.required],
-      sanitationCertificate:['',Validators.required],
-      buildingSaftyCertificate:['',Validators.required],
+      }),
+      sclprofile3:this.fb.group({
+        principalName:['',Validators.required],
+        principalPhone:['',[Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
+        principalEmail:['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        principalMobile:['',[Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
+      }),
+      sclprofile4:this.fb.group({
+        instituteRecognizedByGovt:['',Validators.required],
+        boardName:['',Validators.required],
+        affiliationNo:['',Validators.required],
+        affiliationYear:['',Validators.required],
+        affiliationType:['',Validators.required],
+        affiliationCondition:['',Validators.required],
+        minorityStatusCertificate:['',Validators.required],
+        christian:['',Validators.required],
+        hindu:['',Validators.required],
+        muslim:['',Validators.required],
+        others:['',Validators.required],
+        nonBeliever:['',Validators.required],
+        fireSaftyCertificate:['',Validators.required],
+        sanitationCertificate:['',Validators.required],
+        buildingSaftyCertificate:['',Validators.required],
+      }),
+      sclprofile5:this.fb.group({
       schoolOwnedBy:['',Validators.required],
       trustName:['',Validators.required],
       isTrustRegistered:['',Validators.required],
@@ -83,15 +93,19 @@ export class SchoolProfileComponent implements OnInit {
       presidentAddress:['',Validators.required],
       presidentPhone:['',[Validators.required,Validators.min(1000000000), Validators.max(9999999999)]],
       presidentEmail:['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      governingBodyOfTrust:['',Validators.required],
-      members:['',Validators.required],
-      tenureMember:['',Validators.required],
-      epcc:['',Validators.required],
-      epccMember:['',Validators.required],
-      epccTenure:['',Validators.required],
-      parentTeacherAssociation:['',Validators.required],
-      parentTeacherAssociationMember:['',Validators.required],
-      parentTeacherAssociationTenure:['',Validators.required],
+      }),
+      sclprofile6:this.fb.group({
+        governingBodyOfTrust:['',Validators.required],
+        members:['',Validators.required],
+        tenureMember:['',Validators.required],
+        epcc:['',Validators.required],
+        epccMember:['',Validators.required],
+        epccTenure:['',Validators.required],
+        parentTeacherAssociation:['',Validators.required],
+        parentTeacherAssociationMember:['',Validators.required],
+        parentTeacherAssociationTenure:['',Validators.required],
+      }),
+      sclprofile7:this.fb.group({
       studentAssociation:['',Validators.required],
       studentAssociationMember:['',Validators.required],
       studentAssociationTenure:['',Validators.required],
@@ -100,6 +114,8 @@ export class SchoolProfileComponent implements OnInit {
       constitutionCommittee:['',Validators.required],
       constitutionMember:['',Validators.required],
       constitutionTenure:['',Validators.required],
+      }),
+      sclprofile8:this.fb.group({
       schoolBuildingType:['',Validators.required],
       schoolCampusArea:['',Validators.required],
       builtupArea:['',Validators.required],
@@ -108,6 +124,8 @@ export class SchoolProfileComponent implements OnInit {
       provision:['',Validators.required],
       noOfStaircase:['',Validators.required],
       noOfLifts:['',Validators.required],
+      }),
+      sclprofile9:this.fb.group({
       classRoom:['',Validators.required],
       staffRoom:['',Validators.required],
       physicsLab:['',Validators.required],
@@ -131,6 +149,8 @@ export class SchoolProfileComponent implements OnInit {
       room:['',Validators.required],
       splNeeds:['',Validators.required],
       staffSpeciallNeed:['',Validators.required],
+      }),
+      sclprofile10:this.fb.group({
       boundaryWall:['',Validators.required],
       wallStatus:['',Validators.required],
       cctv:['',Validators.required],
@@ -142,6 +162,8 @@ export class SchoolProfileComponent implements OnInit {
       noOfFemaleGuard:['',Validators.required],
       waterFacility:['',Validators.required],
       drainageFacility:['',Validators.required],
+      }),
+      sclprofile11:this.fb.group({
       midday:['',Validators.required],
       noOfOwnedBus:['',Validators.required],
       gpsCamera:['',Validators.required],
@@ -151,6 +173,8 @@ export class SchoolProfileComponent implements OnInit {
       subContractedBus:['',Validators.required],
       busPass:['',Validators.required],
       freeTransport:['',Validators.required],
+      }),
+      sclprofile12:this.fb.group({
       libraryOpen:['',Validators.required],
       libraryClose:['',Validators.required],
       noOfLibraryBook:['',Validators.required],
@@ -165,6 +189,8 @@ export class SchoolProfileComponent implements OnInit {
       multimedia3:[false],
       multimedia4:[false],
       multimedia5:[false],
+      }),
+      sclprofile13:this.fb.group({
       permanentMalePrincipal:['',Validators.required],
       permanentFemalePrincipal:['',Validators.required],
       temporaryMalePrincipal:['',Validators.required],
@@ -221,6 +247,8 @@ export class SchoolProfileComponent implements OnInit {
       permanentFemalePT:['',Validators.required],
       temporaryMalePT:['',Validators.required],
       temporaryFemalePT:['',Validators.required],
+      }),
+      sclprofile14:this.fb.group({
       permanentOfficeManager:['',Validators.required],
       temporaryOfficeManager:['',Validators.required],
       partTimeOfficeManager:['',Validators.required],
@@ -242,6 +270,8 @@ export class SchoolProfileComponent implements OnInit {
       permanentOthers:['',Validators.required],
       temporaryOthers:['',Validators.required],
       partTimeOthers:['',Validators.required],
+      }),
+      sclprofile15:this.fb.group({
       noOfCarricularActivity:['',Validators.required],
       noOfGrps:['',Validators.required],
       noOfCommunity:['',Validators.required],
@@ -263,6 +293,8 @@ export class SchoolProfileComponent implements OnInit {
       noOfSclProgramsAtState:['',Validators.required],
       noOfSclProgramsAtNational:['',Validators.required],
       noOfSclProgramsAtInternational:['',Validators.required],
+      }),
+      sclprofile16:this.fb.group({
       academicYearBeginingMonth:['',Validators.required],
       academicYearEndingMonth:['',Validators.required],
       workingDay2021:['',Validators.required],
@@ -279,7 +311,8 @@ export class SchoolProfileComponent implements OnInit {
       nonInstructuionalWorkingday2019:['',Validators.required],
       holiday2021:['',Validators.required],
       holiday2020:['',Validators.required],
-      holiday2019:['',Validators.required],
+      holiday2019:['',Validators.required],}),
+      sclprofile17:this.fb.group({
       noOfSubTeachingPeriod:['',Validators.required],
       noOfMoralTeachingPeriod:['',Validators.required],
       teachingDuration:['',Validators.required],
@@ -289,6 +322,7 @@ export class SchoolProfileComponent implements OnInit {
       fromTimeInWinter:['',Validators.required],
       toTimeInWinter:['',Validators.required],
       shift:['',Validators.required],
+      }) 
       // scholarship_name0:[''],
       // boy0:[''],
       // girl0:[''],
@@ -299,6 +333,7 @@ export class SchoolProfileComponent implements OnInit {
     });
     this.subservice.sclprofile().subscribe((arg: any) =>{
       this.data=arg;
+      console.log(this.data);
       if(this.data!=null)
         this.generalForm.patchValue(this.data)
 
@@ -314,11 +349,18 @@ export class SchoolProfileComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.generalForm.valid){
-      console.log(this.generalForm.value)
-      this.subservice.gen_info(this.generalForm.value).subscribe((arg:any) => {
+    var dataToSubmit=this.dataToSubmit+this.steps
+
+    console.log(dataToSubmit);
+    
+    if(this.generalForm.controls[dataToSubmit].valid){
+      console.log(this.generalForm.controls[dataToSubmit].value)
+      this.subservice.gen_info(this.generalForm.controls[dataToSubmit].value).subscribe((arg:any) => {
         console.log()
       })
+    }
+    else{
+      alert("all the fields are mandatory")
     }
   
   }

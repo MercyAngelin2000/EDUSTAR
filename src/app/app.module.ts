@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './views/home/home.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
 import { SchoolProfileComponent } from './views/school-profile/school-profile.component';
+import { SampleComponent } from './sample/sample.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SchoolProfileComponent } from './views/school-profile/school-profile.co
     RegisterComponent,
     HomeComponent,
     UserProfileComponent,
-    SchoolProfileComponent
+    SchoolProfileComponent,
+    SampleComponent,
   ],
   imports: [
     BrowserModule,
