@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubserviceService } from 'src/app/service/subservice.service';
 import Swal from 'sweetalert2';
@@ -322,23 +322,46 @@ export class SchoolProfileComponent implements OnInit {
       fromTimeInWinter:['',Validators.required],
       toTimeInWinter:['',Validators.required],
       shift:['',Validators.required],
-      }) 
-      // scholarship_name0:[''],
-      // boy0:[''],
-      // girl0:[''],
-      // by_govt0:[''],
-      // by_private0:[''],
-      // scholarship:this.fb.array([])
+      
+      }) ,
+      sclprofile18:this.fb.group({
+      scholarship:this.fb.array([])
+    }),
+      
 
     });
     this.subservice.sclprofile().subscribe((arg: any) =>{
       this.data=arg;
-      console.log(this.data);
-      if(this.data!=null)
-        this.generalForm.patchValue(this.data)
+      
+      if(this.data!=null){
+        this.generalForm.patchValue(this.data);
+        
+        this.data.sclprofile18.scholarship.forEach((element:any) => {
+          this.scholarship_detail().push(this.loadRow(element));
+          
+        });
+      }
+      else{
+
+      }
+
+    
 
   })
   }
+
+  loadRow(data:any):FormGroup{
+    return this.fb.group({
+      scholarshipName:[data[0]],
+      boy:[data[1]],
+      girl:[data[2]],
+      byGovt:[data[3]],
+      byPrivate:[data[4]]
+      
+    });
+  }
+
+  
   onPrevious(){
     this.steps=this.steps-1;
     this.Message();
@@ -356,6 +379,7 @@ export class SchoolProfileComponent implements OnInit {
     if(this.generalForm.controls[dataToSubmit].valid){
       console.log(this.generalForm.controls[dataToSubmit].value)
       this.subservice.gen_info(this.generalForm.controls[dataToSubmit].value).subscribe((arg:any) => {
+        this.id = arg;
         console.log()
       })
     }
@@ -392,30 +416,30 @@ export class SchoolProfileComponent implements OnInit {
 
     
   }
-  // scholarship_detail():FormArray{
-  //   return this.generalForm.get('scholarship') as FormArray;
-  // }
+  scholarship_detail():FormArray{
+    return this.generalForm.get('sclprofile18.scholarship') as FormArray;
+  }
 
-  // newrow():FormGroup{
-  //   return this.fb.group({
-  //     scholarship_name:[''],
-  //     boy:[''],
-  //     girl:[''],
-  //     by_govt:[''],
-  //     by_private:['']
+  newrow():FormGroup{
+    return this.fb.group({
+      scholarshipName:['',Validators.required],
+      boy:['',Validators.required],
+      girl:['',Validators.required],
+      byGovt:['',Validators.required],
+      byPrivate:['',Validators.required]
       
-  //   });
-  // }
+    });
+  }
 
-  // addrow(){
-  //   return this.scholarship_detail().push(this.newrow())
+  addrow(){
+    return this.scholarship_detail().push(this.newrow())
 
-  // }
+  }
 
-  // removerow(i:any){
-  //   return this.scholarship_detail().removeAt(i)
-  // }
-
-
+  removerow(i:any){
+    return this.scholarship_detail().removeAt(i)
+  }
 
 }
+
+

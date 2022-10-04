@@ -5495,113 +5495,33 @@
 
                     </div>
                 </div></div>
-                <!-- <div *ngIf="steps==1">
+                <div *ngIf="steps==18">
+                    <div formGroupName="sclprofile18">
                     <div class="row" style="margin-bottom: 20px; margin-top: 20px;">
                         <div>
                             <h6 style="text-align: center;">Scholarships Offered to the Students</h6>
                         </div>
 
                     </div>
-                    <table class="table table-bordered ">
+                    <table class="table table-bordered " formArrayName="scholarship">
                         <thead >
                             <tr>
                               <th rowspan="2">Name of the Scholarship</th>
                               <th colspan="2" >No. of Beneficiaries</th>
                               <th rowspan="2">By Govt</th>
                               <th rowspan="2">By Private</th>
-                              <th rowspan="2">Action</th>
+                              <th colspan="2">Action</th>
                             </tr>
                             <tr>
-                                <th>boy0s</th>
-                                <th>girl0s</th>
+                                <th>boys</th>
+                                <th>girls</th>
+                                <th> <i class="fa fa-plus" aria-hidden="true" (click)="addrow()" style="color:green;"></i></th>
                             </tr>
 
                           </thead>
                           <tbody>
-                            <tr>
-                                <td class="col-md-2">
-                                    <div class="input-group">
-                                        <div style="width: 40px;background-color: hwb(0 88% 9%);">
-                                            <i class="fa fa-list-ul" aria-hidden="true"
-                                                style="margin-left: 13px; margin-top: 10px;"></i>
-                                        </div>
-                                        <input type="text" formControlName="scholarship_name0" class="form-control">
-    
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('scholarship_name0')?.invalid && (generalForm.get('scholarship_name')?.dirty || generalForm.get('scholarship_name')?.touched) && generalForm.get('scholarship_name')?.errors?.required">
-                                            required
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col-md-2">
-                                    <div class="input-group">
-                                        <div style="width: 40px;background-color: hwb(0 88% 9%);">
-                                            <i class="fa fa-list-ul" aria-hidden="true"
-                                                style="margin-left: 13px; margin-top: 10px;"></i>
-                                        </div>
-                                        <input type="number" formControlName="boy00" class="form-control">
-    
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('boy00')?.invalid && (generalForm.get('boy00')?.dirty || generalForm.get('boy00')?.touched) && generalForm.get('boy00')?.errors?.required">
-                                            required
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col-md-2">
-                                    <div class="input-group">
-                                        <div style="width: 40px;background-color: hwb(0 88% 9%);">
-                                            <i class="fa fa-list-ul" aria-hidden="true"
-                                                style="margin-left: 13px; margin-top: 10px;"></i>
-                                        </div>
-                                        <input type="number" formControlName="girl00" class="form-control">
-    
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('girl00')?.invalid && (generalForm.get('girl00')?.dirty || generalForm.get('girl00')?.touched) && generalForm.get('girl00')?.errors?.required">
-                                            required
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col-md-2">
-                                    <div class="input-group">
-                                        <div style="width: 40px;background-color: hwb(0 88% 9%);">
-                                            <i class="fa fa-list-ul" aria-hidden="true"
-                                                style="margin-left: 13px; margin-top: 10px;"></i>
-                                        </div>
-                                        <select class="form-control form-select" formControlName="by_govt00">
-                                            <option disabled>--Select One--</option>
-                                            <option selected value='yes'>Yes</option>
-                                            <option value='no'>No</option>
-                                        </select>
-    
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('by_govt00')?.invalid && (generalForm.get('by_govt00')?.dirty || generalForm.get('by_govt00')?.touched) && generalForm.get('by_govt00')?.errors?.required">
-                                            required
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="col-md-2">
-                                    <div class="input-group">
-                                        <div style="width: 40px;background-color: hwb(0 88% 9%);">
-                                            <i class="fa fa-list-ul" aria-hidden="true"
-                                                style="margin-left: 13px; margin-top: 10px;"></i>
-                                        </div>
-                                        <select class="form-control form-select" formControlName="by_private00">
-                                            <option disabled>--Select One--</option>
-                                            <option selected value='yes'>Yes</option>
-                                            <option value='no'>No</option>
-                                        </select>
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('by_private00')?.invalid && (generalForm.get('by_private00')?.dirty || generalForm.get('by_private00')?.touched) && generalForm.get('by_private00')?.errors?.required">
-                                            required
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <i class="fa fa-plus" aria-hidden="true" (click)="addrow()" style="margin-left: 50px; color:green;"></i>
-                                </td>
-                            </tr>
                            
-                            <tr *ngFor="let data of scholarship_detail().controls;let i=index;" formGroupName="{{i}}" formArrayName="scholarship">
+                            <tr *ngFor="let data of scholarship_detail().controls; let i=index;" formGroupName="{{i}}" >
                                 
                                 <td class="col-md-2">
                                     <div class="input-group">
@@ -5609,12 +5529,12 @@
                                             <i class="fa fa-list-ul" aria-hidden="true"
                                                 style="margin-left: 13px; margin-top: 10px;"></i>
                                         </div>
-                                        <input type="text" formControlName="scholarship_name0" class="form-control">
+                                        <input type="text" formControlName="scholarshipName" class="form-control">
     
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('scholarship_name0')?.invalid && (generalForm.get('scholarship_name0')?.dirty || generalForm.get('scholarship_name0')?.touched) && generalForm.get('scholarship_name0')?.errors?.required">
+                                        <!-- <div style="color: red;"
+                                            *ngIf="generalForm.get('sclprofile18.scholarship.{{i}}.scholarship_name')?.invalid && (generalForm.get('sclprofile18.scholarship.{{i}}.scholarship_name')?.dirty || generalForm.get('sclprofile18.scholarship.{{i}}.scholarship_name')?.touched) && generalForm.get('sclprofile18.scholarship.{{i}}.scholarship_name')?.errors?.['required']">
                                             required
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td class="col-md-2">
@@ -5623,12 +5543,12 @@
                                             <i class="fa fa-list-ul" aria-hidden="true"
                                                 style="margin-left: 13px; margin-top: 10px;"></i>
                                         </div>
-                                        <input type="number" formControlName="boy0" class="form-control">
+                                        <input type="number" formControlName="boy" class="form-control">
     
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('boy0')?.invalid && (generalForm.get('boy0')?.dirty || generalForm.get('boy0')?.touched) && generalForm.get('boy0')?.errors?.required">
+                                        <!-- <div style="color: red;"
+                                            *ngIf="generalForm.get('sclprofile18.boy')?.invalid && (generalForm.get('sclprofile18.boy')?.dirty || generalForm.get('sclprofile18.boy')?.touched) && generalForm.get('sclprofile18.boy')?.errors?.['required']">
                                             required
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td class="col-md-2">
@@ -5637,12 +5557,12 @@
                                             <i class="fa fa-list-ul" aria-hidden="true"
                                                 style="margin-left: 13px; margin-top: 10px;"></i>
                                         </div>
-                                        <input type="number" formControlName="girl0" class="form-control">
+                                        <input type="number" formControlName="girl" class="form-control">
     
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('girl0')?.invalid && (generalForm.get('girl0')?.dirty || generalForm.get('girl0')?.touched) && generalForm.get('girl0')?.errors?.required">
+                                        <!-- <div style="color: red;"
+                                            *ngIf="generalForm.get('sclprofile18.girl')?.invalid && (generalForm.get('sclprofile18.girl')?.dirty || generalForm.get('sclprofile18.girl')?.touched) && generalForm.get('sclprofile18.girl')?.errors?.['required']">
                                             required
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td class="col-md-2">
@@ -5651,16 +5571,16 @@
                                             <i class="fa fa-list-ul" aria-hidden="true"
                                                 style="margin-left: 13px; margin-top: 10px;"></i>
                                         </div>
-                                        <select class="form-control form-select" formControlName="by_govt0">
+                                        <select class="form-control form-select" formControlName="byGovt">
                                             <option disabled>--Select One--</option>
                                             <option selected value='yes'>Yes</option>
                                             <option value='no'>No</option>
                                         </select>
     
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('by_govt0')?.invalid && (generalForm.get('by_govt0')?.dirty || generalForm.get('by_govt0')?.touched) && generalForm.get('by_govt0')?.errors?.required">
+                                        <!-- <div style="color: red;"
+                                            *ngIf="generalForm.get('sclprofile18.by_govt')?.invalid && (generalForm.get('sclprofile18.by_govt')?.dirty || generalForm.get('sclprofile18.by_govt')?.touched) && generalForm.get('sclprofile18.by_govt')?.errors?.['required']">
                                             required
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td class="col-md-2">
@@ -5669,15 +5589,15 @@
                                             <i class="fa fa-list-ul" aria-hidden="true"
                                                 style="margin-left: 13px; margin-top: 10px;"></i>
                                         </div>
-                                        <select class="form-control form-select" formControlName="by_private0">
+                                        <select class="form-control form-select" formControlName="byPrivate">
                                             <option disabled>--Select One--</option>
                                             <option selected value='yes'>Yes</option>
                                             <option value='no'>No</option>
                                         </select>
-                                        <div style="color: red;"
-                                            *ngIf="generalForm.get('by_private0')?.invalid && (generalForm.get('by_private0')?.dirty || generalForm.get('by_private0')?.touched) && generalForm.get('by_private0')?.errors?.required">
+                                        <!-- <div style="color: red;"
+                                            *ngIf="generalForm.get('sclprofile18.by_private')?.invalid && (generalForm.get('sclprofile18.by_private')?.dirty || generalForm.get('sclprofile18.by_private')?.touched) && generalForm.get('sclprofile18.by_private')?.errors?.['required']">
                                             required
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td>
@@ -5693,7 +5613,7 @@
 
 
 
-                </div> -->
+                </div></div>
 
 
 
@@ -5705,7 +5625,7 @@
                     aria-hidden="true" style="color: white;"></i>Privious</button>
             <button type="submit"  class="btn btn-success"  (click)="onSubmit()" style="float:right;background-color: rgb(14, 194, 113);">Save</button>
             <button type="" (click)="onNext()" class="btn btn-primary" style="float:right;margin-right: 20px;background-color: rgb(3, 185, 236);"
-                *ngIf="steps!=17">Next<i class="fa fa-arrow-right" aria-hidden="true"
+                *ngIf="steps!=18">Next<i class="fa fa-arrow-right" aria-hidden="true"
                     style="color: white;"></i></button>
            
         </div>
